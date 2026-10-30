@@ -242,6 +242,29 @@ fieldset.field{border:0;margin:0;padding:0}
 .fab-wa svg{width:20px;height:20px;flex:none}
 @media (max-width:520px){.fab-wa span{display:none}}
 body.locked .fab-wa{display:none}
+/* exit popup */
+.xp{position:fixed;inset:0;z-index:70;display:grid;place-items:center;background:#0a0a0bcc;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));animation:xpfade .25s ease}
+.xp-box{position:relative;width:min(560px,100%);max-height:100%;overflow:auto;background:var(--void);color:var(--star);border:var(--bw) solid var(--star);box-shadow:8px 8px 0 var(--signal);animation:xpin .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes xpfade{from{opacity:0}to{opacity:1}}
+@keyframes xpin{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.xp-top{display:flex;justify-content:space-between;align-items:stretch;border-bottom:var(--bw) solid var(--line)}
+.xp-top span{padding:12px 16px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--signal)}
+.xp-x{background:transparent;border:0;border-left:var(--bw) solid var(--line);color:var(--star);font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;padding:0 16px;cursor:pointer}
+.xp-x:hover{background:var(--star);color:var(--void)}
+.xp-body{padding:clamp(20px,4vw,32px);display:grid;gap:16px}
+.xp-body h2{font-size:clamp(30px,6vw,48px);line-height:.9}
+.xp-body h2 b{color:var(--signal)}
+.xp-body>p{margin:0;color:var(--dust)}
+.xp-acts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.xp-acts .btn{padding:14px 12px}
+.xp-or{display:flex;align-items:center;gap:12px;font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--dust)}
+.xp-or::before,.xp-or::after{content:"";flex:1;height:var(--bw);background:var(--line)}
+.xp-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;align-items:end}
+.xp-form .field input{padding:11px 12px}
+.xp-form .btn{padding:13px 16px}
+.xp-done{margin:0;color:var(--star)}
+@media (max-width:560px){.xp-acts{grid-template-columns:1fr}.xp-form{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.xp,.xp-box{animation:none}}
 .done{padding:clamp(22px,3vw,40px);display:grid;gap:16px}
 .done h3{font-size:28px}
 .done p{margin:0;color:var(--dust)}
@@ -528,6 +551,28 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
 
 <a class="fab-wa" href="https://wa.me/5511988366161?text=Ol%C3%A1%2C%20Igor!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
 
+<!-- exit popup -->
+<div class="xp" id="xp" role="dialog" aria-modal="true" aria-labelledby="xpTitle" hidden>
+  <div class="xp-box">
+    <div class="xp-top"><span>Antes de decolar</span><button class="xp-x" type="button" id="xpClose" aria-label="Fechar">Fechar ✕</button></div>
+    <div class="xp-body">
+      <h2 id="xpTitle">Vamos conversar sobre o seu <b>projeto?</b></h2>
+      <p>Me conte o que você precisa e eu respondo com um plano de voo. Sem compromisso.</p>
+      <div class="xp-acts">
+        <a class="btn red" href="https://wa.me/5511988366161?text=Ol%C3%A1%2C%20Igor!%20Vim%20pelo%20site%20e%20quero%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">Chamar no WhatsApp →</a>
+        <a class="btn" href="#contato" id="xpQuote">Pedir orçamento</a>
+      </div>
+      <div class="xp-or">ou deixe seu contato que eu chamo você</div>
+      <form class="xp-form" id="xpForm" novalidate>
+        <div class="field"><label for="xp-nome">Nome</label><input id="xp-nome" autocomplete="name" required></div>
+        <div class="field"><label for="xp-contato">E-mail ou WhatsApp</label><input id="xp-contato" autocomplete="email" required></div>
+        <button class="btn red" type="submit" id="xpSend">Enviar</button>
+      </form>
+      <p class="xp-done mono" id="xpMsg" role="status" aria-live="polite"></p>
+    </div>
+  </div>
+</div>
+
 <!-- lightbox -->
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Imagem ampliada" hidden>
   <img id="lbImg" alt="">
@@ -789,7 +834,7 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
         body:JSON.stringify({_subject:'Novo projeto pelo site · '+(emp||nome.value.trim()),_template:'table',_captcha:'false',Nome:nome.value.trim(),email:email.value.trim(),Empresa:emp||'-',Servicos:servs.join(', ')||'Ainda não sei',Prazo:$('#f-prazo').value,Mensagem:msg.value.trim()})});
       const j=await r.json().catch(()=>({}));
       if(!r.ok||String(j.success)==='false') throw new Error('falhou');
-      form.reset();show(sentBox);
+      form.reset();show(sentBox);markContacted();
     }catch(err){
       summary.textContent=text;
       $('#waLink').href='https://wa.me/'+WA+'?text='+encodeURIComponent(text);
@@ -800,6 +845,70 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
   $('#copyMsg').addEventListener('click',e=>copyText(summary.textContent,e.currentTarget,'Copiar mensagem',summary));
   $('#editMsg').addEventListener('click',()=>{doneBox.hidden=true;form.hidden=false;$('#f-nome').focus()});
   $('#newMsg').addEventListener('click',()=>{sentBox.hidden=true;form.hidden=false;$('#f-nome').focus()});
+
+  /* ---------- exit popup: once per visitor, only for people who haven't made contact ---------- */
+  const XP_KEY='ipd-exit-popup';
+  const store={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+  let xpShown=!!store.get(XP_KEY), xpLast=null;
+  const t0=Date.now(), xp=$('#xp');
+  function markContacted(){xpShown=true;store.set(XP_KEY,'contato');}
+  document.addEventListener('click',e=>{if(e.target.closest('a[href^="https://wa.me"]')) markContacted();},true);
+  function blocked(){
+    return xpShown||Date.now()-t0<12000||!detail.hidden||!lb.hidden||!$('#mnav').hidden||document.body.classList.contains('locked')
+      ||$('#contato').contains(document.activeElement);
+  }
+  function openXp(){
+    if(blocked()) return;
+    xpShown=true;store.set(XP_KEY,'visto');
+    xpLast=document.activeElement;xp.hidden=false;document.body.classList.add('locked');
+    $('#xpClose').focus();
+  }
+  function closeXp(){
+    if(xp.hidden) return;
+    xp.hidden=true;document.body.classList.remove('locked');
+    if(xpLast&&xpLast.focus) xpLast.focus({preventScroll:true});
+  }
+  $('#xpClose').addEventListener('click',closeXp);
+  xp.addEventListener('click',e=>{if(e.target===xp) closeXp();});
+  addEventListener('keydown',e=>{
+    if(xp.hidden) return;
+    if(e.key==='Escape'){closeXp();return}
+    if(e.key==='Tab'){const f=[...xp.querySelectorAll('a,button,input')].filter(el=>!el.disabled&&el.offsetParent);const a=f[0],z=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+  });
+  $('#xpQuote').addEventListener('click',e=>{e.preventDefault();e.stopPropagation();closeXp();revealSection('contato');setTimeout(()=>$('#f-nome').focus({preventScroll:true}),reduce?0:900);});
+  $('#xpForm').addEventListener('submit',async e=>{
+    e.preventDefault();
+    const n=$('#xp-nome'),c=$('#xp-contato'),msg=$('#xpMsg'),btn=$('#xpSend');
+    const contato=c.value.trim(), digits=contato.replace(/\D/g,'');
+    const ok=n.value.trim()&&(/^\S+@\S+\.\S+$/.test(contato)||digits.length>=10);
+    n.setAttribute('aria-invalid',n.value.trim()?'false':'true');c.setAttribute('aria-invalid',ok||!n.value.trim()?'false':'true');
+    if(!ok){msg.textContent='Escreva seu nome e um e-mail ou WhatsApp com DDD.';(n.value.trim()?c:n).focus();return}
+    btn.disabled=true;btn.textContent='Enviando…';
+    try{
+      const r=await fetch('https://formsubmit.co/ajax/'+EMAIL,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body:JSON.stringify({_subject:'Contato rápido pelo site · '+n.value.trim(),_template:'table',_captcha:'false',Nome:n.value.trim(),Contato:contato,Origem:'Pop-up de saída'})});
+      const j=await r.json().catch(()=>({}));
+      if(!r.ok||String(j.success)==='false') throw new Error('falhou');
+      markContacted();$('#xpForm').hidden=true;$('.xp-or').hidden=true;
+      msg.textContent='Recebido! Eu chamo você em breve.';
+    }catch(err){
+      msg.innerHTML='Não consegui enviar daqui. <a href="https://wa.me/'+WA+'?text='+encodeURIComponent('Olá, Igor! Sou '+n.value.trim()+'. Meu contato: '+contato)+'" target="_blank" rel="noopener" style="color:var(--signal)">Mande pelo WhatsApp →</a>';
+    }finally{btn.disabled=false;btn.textContent='Enviar';}
+  });
+  // desktop: the pointer leaves through the top of the window (tabs, address bar, close button)
+  document.addEventListener('mouseout',e=>{if(!e.relatedTarget&&e.clientY<=8) openXp();});
+  // touch screens: a fast flick back up after browsing a while, or a long visit without reaching the contact form
+  if(matchMedia('(hover: none)').matches){
+    let ly=scrollY,lt=performance.now(),maxY=0;
+    addEventListener('scroll',()=>{
+      const y=scrollY,t=performance.now(),v=(ly-y)/Math.max(1,t-lt);
+      maxY=Math.max(maxY,y);
+      if(v>2.2&&maxY>innerHeight*1.5&&y>innerHeight*0.5) openXp();
+      ly=y;lt=t;
+    },{passive:true});
+    setTimeout(()=>{const c=$('#contato').getBoundingClientRect();if(c.top>innerHeight) openXp();},45000);
+  }
 
   /* ---------- mobile menu ---------- */
   const menuBtn=$('#menuBtn'),mnav=$('#mnav');
