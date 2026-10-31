@@ -14,42 +14,43 @@
 <title>Igor Pereira DSGN</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..900&family=Geist+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: brutalist mission log. Every section opens with a ruled index bar (number · name · status), content sits on a visible 2px grid, dark and light bands alternate. Space lives only in the dark bands, quietly. */
+/* Layout: contemporary brutalism. An exposed hairline grid, huge tight grotesk against tiny mono metadata and lots of air; dark and light bands alternate, space lives in thin orbit lines and mission data, red appears about once per screen. */
 :root{
-  --void:#0a0a0b;
-  --star:#f2f1ee;
-  --dust:#8f8e96;
-  --line:#2b2b31;
-  --paper:#ebebed;
-  --ink:#0b0b0d;
-  --ink-2:#56555d;
+  --void:#0b0b0c;
+  --star:#f3f1ec;
+  --dust:#8d8b86;
+  --line:rgba(243,241,236,.14);
+  --paper:#f3f1ec;
+  --ink:#0b0b0c;
+  --ink-2:#5c5a55;
+  --rule-l:rgba(11,11,12,.16);
   --signal:#e5232f;
-  --bw:2px;
-  --f-display:"Archivo","Arial Black",system-ui,sans-serif;
-  --f-body:"Archivo",system-ui,-apple-system,"Segoe UI",sans-serif;
-  --f-mono:"IBM Plex Mono",ui-monospace,"Courier New",monospace;
+  --bw:1px;
+  --f-display:"Geist","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-body:"Geist","Helvetica Neue",Arial,system-ui,sans-serif;
+  --f-mono:"Geist Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
   color-scheme:dark;
 }
 *{box-sizing:border-box}
 [hidden]{display:none!important}
 html{scroll-behavior:smooth}
-body{background:var(--void);color:var(--star);font-family:var(--f-body);font-size:17px;line-height:1.55;overflow-x:hidden}
+body{background:var(--void);color:var(--star);font-family:var(--f-body);font-size:16px;line-height:1.55;overflow-x:hidden;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden}
 ::selection{background:var(--signal);color:#fff}
 a{color:inherit}
 button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--signal);outline-offset:2px}
-h1,h2,h3{margin:0;font-family:var(--f-display);font-stretch:118%;font-weight:900;text-transform:uppercase;letter-spacing:-.01em;text-wrap:balance}
-.mono{font-family:var(--f-mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px}
+h1,h2,h3{margin:0;font-family:var(--f-display);font-weight:700;letter-spacing:-.045em;line-height:.95;text-wrap:balance}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.02em;text-transform:uppercase}
 
 /* bands */
 .band{position:relative;z-index:1;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 .band.dark{color:var(--star);--fg:var(--star);--mut:var(--dust);--rl:var(--line);--bg:var(--void)}
-.band.light{background:var(--paper);color:var(--ink);--fg:var(--ink);--mut:var(--ink-2);--rl:var(--ink);--bg:var(--paper)}
-.inner{max-width:1280px;margin:0 auto}
-.pad{padding-block:clamp(56px,8vw,112px)}
+.band.light{background:var(--paper);color:var(--ink);--fg:var(--ink);--mut:var(--ink-2);--rl:var(--rule-l);--bg:var(--paper)}
+.inner{max-width:1360px;margin:0 auto}
+.pad{padding-block:clamp(72px,10vw,140px)}
 
 /* index bar that opens every section */
 .ibar{display:grid;grid-template-columns:auto 1fr auto;border-block:var(--bw) solid var(--rl);font-family:var(--f-mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase}
@@ -329,6 +330,146 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
 .next a{font-family:var(--f-display);font-stretch:118%;font-weight:900;text-transform:uppercase;font-size:clamp(24px,3.4vw,48px);text-decoration:none}
 .next a:hover{color:var(--signal)}
 
+/* ===== contemporary brutalism layer ===== */
+/* buttons */
+.btn{font-family:var(--f-body);font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;padding:13px 18px;border-width:1px}
+.btn.red:hover{background:#c41b26;border-color:#c41b26;color:#fff}
+.tlink{display:inline-flex;align-self:flex-start;gap:8px;font-size:14px;text-decoration:none;color:var(--fg,var(--star));border-bottom:1px solid var(--line);padding-bottom:4px;transition:border-color .2s}
+.tlink:hover{border-color:currentColor}
+
+/* header */
+.bar{background:rgba(11,11,12,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar .inner{grid-template-columns:auto 1fr auto;align-items:center;gap:24px;min-height:64px}
+.brand{padding-block:0}
+.brand img{height:30px}
+.hclock{justify-self:end;color:var(--dust)}
+.nav{align-items:center;gap:6px}
+.nav a{border:0;padding:8px 12px;font-family:var(--f-body);font-size:14px;letter-spacing:0;text-transform:none;color:var(--dust)}
+.nav a:hover{background:transparent;color:var(--star)}
+.nav a.cta{background:var(--signal);color:#fff;padding:11px 16px;margin-left:10px}
+.nav a.cta:hover{background:#c41b26;color:#fff}
+.lang-btn,.menu-btn{border:0;padding:8px 10px;font-family:var(--f-mono);font-size:12px;font-weight:500;letter-spacing:.02em;color:var(--star)}
+.lang-btn:hover{background:transparent;color:var(--signal)}
+.menu-btn[aria-expanded="true"]{background:transparent;color:var(--signal)}
+.mnav{border-top:1px solid var(--line)}
+.mnav a{border-bottom:1px solid var(--line);font-family:var(--f-display);font-weight:700;letter-spacing:-.04em;text-transform:none;font-size:34px}
+@media (max-width:1100px){.hclock{display:none}.bar .inner{grid-template-columns:auto 1fr}.nav{justify-self:end}}
+@media (max-width:760px){.nav a.cta{margin-left:4px;padding:10px 12px}}
+
+/* hero */
+.hero{overflow:clip;border-bottom:1px solid var(--line)}
+.hero .inner{position:relative;z-index:2;min-height:min(820px,calc(100svh - 64px));display:grid;grid-template-rows:auto 1fr auto;padding-block:28px 0}
+.hero-top{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--dust)}
+.hero h1{align-self:end;max-width:none;margin:clamp(40px,6vw,80px) 0 clamp(28px,4vw,56px);font-size:clamp(44px,8.2vw,132px);line-height:.9;letter-spacing:-.055em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:block;transform:translateY(105%);animation:lnup 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero h1 .ln:nth-child(2)>span{animation-delay:.08s}
+.hero h1 .ln:nth-child(3)>span{animation-delay:.16s}
+.hero h1 .thin{font-weight:300;color:var(--dust)}
+@keyframes lnup{to{transform:none}}
+.orbits{position:absolute;right:-12%;top:50%;width:min(1100px,95vw);aspect-ratio:1;transform:translateY(-52%);z-index:1;pointer-events:none}
+.orbits svg{width:100%;height:100%;overflow:visible}
+.orbits .spin{transform-origin:50% 50%;animation:spin 140s linear infinite}
+.orbits .spin.b{animation-duration:220s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.p-hero{position:absolute;left:50%;top:50%;right:auto;width:30%;opacity:1;transform:translate(-50%,-56%);filter:saturate(.85)}
+.hero-grid{border-top:1px solid var(--line);margin-top:0;background:transparent}
+.hero-grid>div{padding:18px 20px 22px 0}
+.hero-grid>div+div{padding-left:20px;border-left:1px solid var(--line)}
+.hero-grid small{font-size:11px;letter-spacing:.02em;margin-bottom:0}
+.hero-grid p{margin-top:8px;color:#cfccc5;max-width:32ch}
+.hero-grid .big{display:block;font-family:var(--f-display);font-weight:600;font-size:40px;letter-spacing:-.04em;line-height:1;color:var(--star);margin-top:8px}
+.hero-grid .acts{justify-content:flex-end;gap:14px}
+.hero-grid .btn{width:auto;align-self:stretch}
+@media (max-width:900px){.hero-grid>div:nth-child(3){padding-left:0}.hero-grid>div:nth-child(n+3){border-top:1px solid var(--line)}.hero-grid>div:nth-child(odd){border-left:0;padding-left:0}}
+@media (max-width:520px){.hero-grid>div+div{padding-left:0;border-left:0;border-top:1px solid var(--line)}.orbits{right:-70%;top:30%;opacity:.8}.p-hero{width:34%}}
+
+/* section heads */
+.sec-title{font-size:clamp(56px,12vw,200px);line-height:.82;letter-spacing:-.06em;margin-top:0}
+.sec-title sup{font-family:var(--f-mono);font-size:max(12px,.08em);font-weight:400;letter-spacing:0;vertical-align:top;margin-left:.25em;position:relative;top:.7em;color:var(--mut)}
+.sec-sub{border-bottom:1px solid var(--rl);padding-bottom:clamp(24px,3vw,40px);margin-top:20px}
+.sec-sub p{font-size:15px}
+.arc{position:absolute;right:-6%;top:-14%;width:min(900px,80vw);pointer-events:none;z-index:0}
+.arc-b{right:auto;left:-14%;top:auto;bottom:-10%}
+.band.light .inner{position:relative;z-index:1}
+.band.light{overflow:clip}
+.back{white-space:nowrap}
+
+/* mosaic */
+.mosaic{column-gap:clamp(16px,2vw,28px);row-gap:clamp(36px,4vw,56px);margin-top:clamp(28px,4vw,48px)}
+.tile{aspect-ratio:auto;overflow:visible;background:transparent;cursor:pointer}
+.tile .img{position:relative;overflow:hidden;aspect-ratio:4/3;max-width:100%;background:#e3e0da}
+.tile .art{inset:-8%}
+.tile .art img{transition:transform .9s cubic-bezier(.2,.8,.2,1),filter .5s}
+a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
+.tile .label{position:static;display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:baseline;background:transparent;border-top:1px solid var(--ink);margin-top:14px;padding:12px 0 0;font-family:var(--f-body);font-size:inherit;letter-spacing:0;text-transform:none}
+.tile .label .n{font-family:var(--f-mono);font-size:11px;color:var(--ink-2)}
+.tile .label b{font-weight:600;font-size:clamp(17px,1.5vw,21px);letter-spacing:-.02em;line-height:1.15;white-space:normal}
+.tile .label span:last-child{font-family:var(--f-mono);font-size:11px;text-transform:uppercase;color:var(--ink-2);text-align:right;white-space:normal}
+.mosaic:hover .tile:not(:hover) .art img{filter:grayscale(1) opacity(.55)}
+@media (hover:none){.mosaic:hover .tile:not(:hover) .art img{filter:none}}
+.tile.next-mission{background:transparent;color:var(--ink)}
+.tile.next-mission .img{background:var(--ink);transition:background .3s}
+.tile.next-mission .nm{justify-content:center;align-items:center;text-align:center;gap:8px;color:var(--paper)}
+.tile.next-mission small{font-family:var(--f-mono);font-size:11px;letter-spacing:.02em;color:var(--signal)}
+.tile.next-mission strong{font-family:var(--f-display);font-weight:700;text-transform:none;letter-spacing:-.04em;font-size:clamp(26px,2.6vw,38px)}
+.tile.next-mission:hover .img{background:var(--signal)}
+.tile.next-mission:hover small{color:#fff}
+
+/* about */
+.about-grid{border:1px solid var(--line);margin-top:clamp(28px,4vw,48px)}
+.about-text h3{font-size:clamp(36px,4.6vw,64px);letter-spacing:-.05em}
+.stats strong{font-family:var(--f-display);font-weight:600;letter-spacing:-.04em}
+.stats span,.skills{font-size:11px;letter-spacing:.02em}
+
+/* services */
+.svc{border-top:1px solid var(--ink)}
+.svc li{border-bottom:1px solid var(--rl)}
+.svc button{padding:26px 0}
+.svc button:hover,.svc button:focus-visible{background:transparent;color:var(--ink)}
+.svc button:hover h3,.svc button:focus-visible h3{transform:translateX(12px)}
+.svc h3{font-size:clamp(24px,3vw,44px);letter-spacing:-.04em;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+.svc .n{font-size:12px;font-weight:500}
+.svc button:hover p,.svc button:focus-visible p{color:var(--ink-2)}
+.svc .ar{font-family:var(--f-body);font-size:22px}
+.svc-note{font-size:11px}
+
+/* contact */
+.contact-grid{border:1px solid var(--line);background:rgba(11,11,12,.6)}
+.mailbox{border:1px solid var(--line)}
+.copy{font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.02em}
+.contact-info .list{font-size:11px;letter-spacing:.02em}
+.ibar{border-block:1px solid var(--rl);font-size:11px;letter-spacing:.02em}
+.field label,.field legend,.picks label{font-size:11px;letter-spacing:.02em}
+.field input,.field select,.field textarea{border:0;border-bottom:1px solid var(--line);padding:12px 0;font-family:var(--f-body)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--star)}
+.field textarea{border:1px solid var(--line);padding:12px}
+.picks label{border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+.btn.wa{font-family:var(--f-body)}
+
+/* floating, popup, project page */
+.fab-wa{border:0;box-shadow:none;font-family:var(--f-body);font-weight:500;font-size:14px;letter-spacing:0;text-transform:none;border-radius:999px;padding:12px 16px}
+.fab-wa:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.xp-box{border:1px solid var(--line);box-shadow:0 30px 80px rgba(0,0,0,.5);border-top:3px solid var(--signal)}
+.xp-top,.xp-x{border-color:var(--line)}
+.xp-top span,.xp-or{font-size:11px;letter-spacing:.02em}
+.xp-body h2{letter-spacing:-.05em}
+.dbar{background:rgba(11,11,12,.9);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.back{font-family:var(--f-body);font-weight:500;font-size:14px;letter-spacing:0;text-transform:none}
+.dmeta,.dcode,.facts dt{font-size:11px;letter-spacing:.02em}
+.dbody h1{letter-spacing:-.06em;line-height:.85}
+.next a{font-family:var(--f-display);font-weight:700;letter-spacing:-.04em;text-transform:none}
+.shot:hover::after,.cover:hover::after{font-family:var(--f-mono);font-size:11px;letter-spacing:.02em}
+.wordmark{padding-top:40px}
+
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:80;pointer-events:none;width:12px;height:12px;border-radius:50%;background:var(--signal);display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;text-transform:uppercase;color:#fff;opacity:0;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),opacity .2s}
+.cur span{opacity:0;transition:opacity .2s}
+.cur.big{width:96px;height:96px}
+.cur.big span{opacity:1}
+@media (hover:none){.cur{display:none}}
+@media (prefers-reduced-motion:reduce){.hero h1 .ln>span{animation:none;transform:none}.orbits .spin{animation:none}.orbits .sat{display:none}}
+
 /* locked steps: the section pins under the header and each stretch of scroll brings in one element */
 .st-pin{position:sticky;overflow:hidden}
 .st-track{position:relative;will-change:transform;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
@@ -373,6 +514,7 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
     <a class="brand" href="#" aria-label="IGOR PEREIRA DSGN, voltar ao início">
       <img src="img/logo.webp" alt="IGOR PEREIRA DSGN" width="960" height="344">
     </a>
+    <span class="hclock mono" aria-hidden="true">São Paulo <span id="clock">--:--</span></span>
     <nav class="nav" aria-label="Seções">
       <button class="lang-btn" type="button" id="langBtn" lang="en" aria-label="Switch to English">EN</button>
       <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="mnav">Menu</button>
@@ -394,51 +536,55 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
 <main>
   <!-- HERO (escuro) -->
   <section class="band dark hero" id="embarque">
-    <div class="planet p-hero rv" data-speed="-0.2" style="--d:.5s"><img src="img/planeta-aneis.webp" alt="" width="1318" height="1318" fetchpriority="high"></div>
+    <div class="orbits" aria-hidden="true">
+      <svg viewBox="0 0 1000 1000">
+        <g class="spin"><ellipse cx="500" cy="500" rx="470" ry="170" fill="none" stroke="rgba(243,241,236,.16)" stroke-width="1" transform="rotate(-18 500 500)"/></g>
+        <g class="spin b"><ellipse cx="500" cy="500" rx="360" ry="120" fill="none" stroke="rgba(243,241,236,.10)" stroke-width="1" transform="rotate(-18 500 500)"/></g>
+        <circle cx="500" cy="500" r="250" fill="none" stroke="rgba(243,241,236,.07)" stroke-width="1" stroke-dasharray="2 6"/>
+        <path id="orb" d="M30 500a470 170 0 1 0 940 0a470 170 0 1 0 -940 0" fill="none" transform="rotate(-18 500 500)"/>
+        <circle class="sat" r="5" fill="#e5232f"><animateMotion dur="24s" repeatCount="indefinite"><mpath href="#orb"/></animateMotion></circle>
+      </svg>
+      <div class="planet p-hero rv" style="--d:.5s"><img src="img/planeta-aneis.webp" alt="" width="1318" height="1318" fetchpriority="high"></div>
+    </div>
     <div class="inner">
-      <h1 class="rv" style="--d:.1s;margin-top:clamp(28px,4vw,48px)">Design que transforma <em>comunicação</em> em <span class="red">valor.</span></h1>
+      <div class="hero-top rv"><span class="mono">IPD-01 · Estúdio independente de design</span><span class="mono">23°32′S 46°38′W</span></div>
+      <h1><span class="ln"><span>Design que transforma</span></span><span class="ln"><span class="thin">comunicação</span></span><span class="ln"><span>em <span class="red">valor.</span></span></span></h1>
       <div class="hero-grid rv" style="--d:.25s">
         <div><small>O estúdio</small><p>Design e comunicação visual para pequenas e médias empresas, negócios locais e equipes de marketing.</p></div>
-        <div><small>Experiência</small><p>Mais de 13 anos em direção de arte, branding, redes sociais, editorial e audiovisual.</p></div>
-        <div><small>Próximo lançamento</small><strong>T-<span id="clock">00:00:10</span></strong><p>Plataforma 01 · Portão B-04</p></div>
-        <div class="acts"><a class="btn red" href="#projetos">Ver missões ↓</a><a class="btn" href="#contato">Pegar meu ticket</a></div>
+        <div><small>Experiência</small><strong class="big">13+</strong><p>anos em direção de arte, branding e audiovisual</p></div>
+        <div><small>Missões no portfólio</small><strong class="big">08</strong><p>clientes e projetos autorais</p></div>
+        <div class="acts"><a class="btn red" href="#projetos">Ver missões ↓</a><a class="tlink" href="#contato">Pegar meu ticket →</a></div>
       </div>
     </div>
   </section>
 
   <!-- MISSÕES (claro) -->
   <section class="band light pad" id="projetos" data-steps>
+    <svg class="arc" viewBox="0 0 900 600" aria-hidden="true"><ellipse cx="450" cy="300" rx="440" ry="150" fill="none" stroke="rgba(11,11,12,.12)" stroke-width="1" transform="rotate(-12 450 300)"/><circle cx="70" cy="365" r="4" fill="#0b0b0c"/></svg>
     <div class="inner">
-      <h2 class="sec-title rv" data-st="t" style="--d:.08s">Missões</h2>
+      <h2 class="sec-title rv" data-st="t" style="--d:.08s">Missões<sup>(08)</sup></h2>
       <div class="sec-sub rv" data-st="sub" style="--d:.16s">
         <p>Trabalhos para clientes e projetos autorais. Passe o mouse para ver a missão e clique para abrir todas as peças.</p>
       </div>
       <div class="mosaic" id="mosaic">
-        <a class="tile" data-st="row" href="#volt"><div class="art"><img src="img/p/volt/tile.webp" alt="Volt X1" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Volt X1</b><span>Projeto autoral · Campanha</span></div>
-          <div class="cap"><small>Projeto autoral · Campanha</small><h3>Volt X1</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#petly"><div class="art"><img src="img/p/petly/tile.webp" alt="Petly" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Petly</b><span>UX/UI · Campanha</span></div>
-          <div class="cap"><small>UX/UI · Campanha</small><h3>Petly</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#flora"><div class="art"><img src="img/p/flora/tile.webp" alt="Flora Cosméticos" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Flora Cosméticos</b><span>Estudo de marca</span></div>
-          <div class="cap"><small>Estudo de marca</small><h3>Flora Cosméticos</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#coquetel-burguer"><div class="art"><img src="img/p/coquetel-burguer/tile.webp" alt="Coquetel Burguer" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Coquetel Burguer</b><span>Social media</span></div>
-          <div class="cap"><small>Social media</small><h3>Coquetel Burguer</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#bruno-franklin"><div class="art"><img src="img/p/bruno-franklin/tile.webp" alt="Bruno Franklin" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Bruno Franklin</b><span>Identidade visual · Social media</span></div>
-          <div class="cap"><small>Identidade visual · Social media</small><h3>Bruno Franklin</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#fortnite-energy"><div class="art"><img src="img/p/fortnite-energy/tile.webp" alt="Fortnite Energy Drink" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Fortnite Energy Drink</b><span>Projeto autoral · Manipulação</span></div>
-          <div class="cap"><small>Projeto autoral · Manipulação</small><h3>Fortnite Energy Drink</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#snickers"><div class="art"><img src="img/p/snickers/tile.webp" alt="Snickers Tornado" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Snickers Tornado</b><span>Manipulação de imagem</span></div>
-          <div class="cap"><small>Manipulação de imagem</small><h3>Snickers Tornado</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile" data-st="row" href="#photoshop-vodka"><div class="art"><img src="img/p/photoshop-vodka/tile.webp" alt="Photoshop Vodka" width="1200" height="900" loading="lazy" decoding="async"></div>
-          <div class="label"><b>Photoshop Vodka</b><span>Projeto autoral · Manipulação</span></div>
-          <div class="cap"><small>Projeto autoral · Manipulação</small><h3>Photoshop Vodka</h3><span class="go">Ver missão →</span></div></a>
-        <a class="tile next-mission" data-st="row" href="#contato"><div class="nm"><small>Próxima missão</small><strong>Seu projeto aqui</strong><span>Iniciar projeto →</span></div></a>
+        <a class="tile" data-st="row" href="#volt"><div class="img"><div class="art"><img src="img/p/volt/tile.webp" alt="Volt X1" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">01</span><b>Volt X1</b><span>Projeto autoral · Campanha</span></div></a>
+        <a class="tile" data-st="row" href="#petly"><div class="img"><div class="art"><img src="img/p/petly/tile.webp" alt="Petly" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">02</span><b>Petly</b><span>UX/UI · Campanha</span></div></a>
+        <a class="tile" data-st="row" href="#flora"><div class="img"><div class="art"><img src="img/p/flora/tile.webp" alt="Flora Cosméticos" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">03</span><b>Flora Cosméticos</b><span>Estudo de marca</span></div></a>
+        <a class="tile" data-st="row" href="#coquetel-burguer"><div class="img"><div class="art"><img src="img/p/coquetel-burguer/tile.webp" alt="Coquetel Burguer" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">04</span><b>Coquetel Burguer</b><span>Social media</span></div></a>
+        <a class="tile" data-st="row" href="#bruno-franklin"><div class="img"><div class="art"><img src="img/p/bruno-franklin/tile.webp" alt="Bruno Franklin" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">05</span><b>Bruno Franklin</b><span>Identidade visual · Social media</span></div></a>
+        <a class="tile" data-st="row" href="#fortnite-energy"><div class="img"><div class="art"><img src="img/p/fortnite-energy/tile.webp" alt="Fortnite Energy Drink" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">06</span><b>Fortnite Energy Drink</b><span>Projeto autoral · Manipulação</span></div></a>
+        <a class="tile" data-st="row" href="#snickers"><div class="img"><div class="art"><img src="img/p/snickers/tile.webp" alt="Snickers Tornado" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">07</span><b>Snickers Tornado</b><span>Manipulação de imagem</span></div></a>
+        <a class="tile" data-st="row" href="#photoshop-vodka"><div class="img"><div class="art"><img src="img/p/photoshop-vodka/tile.webp" alt="Photoshop Vodka" width="1200" height="900" loading="lazy" decoding="async"></div></div>
+          <div class="label"><span class="n">08</span><b>Photoshop Vodka</b><span>Projeto autoral · Manipulação</span></div></a>
+        <a class="tile next-mission" data-st="row" href="#contato"><div class="img"><div class="nm"><small>Próxima missão</small><strong>Seu projeto aqui</strong></div></div>
+          <div class="label"><span class="n">09</span><b>Iniciar projeto</b><span>→</span></div></a>
       </div>
     </div>
   </section>
@@ -470,8 +616,9 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
 
   <!-- SERVIÇOS (claro) -->
   <section class="band light pad" id="servicos" data-steps>
+    <svg class="arc arc-b" viewBox="0 0 900 600" aria-hidden="true"><ellipse cx="450" cy="300" rx="440" ry="150" fill="none" stroke="rgba(11,11,12,.10)" stroke-width="1" transform="rotate(14 450 300)"/><circle cx="836" cy="420" r="4" fill="#e5232f"/></svg>
     <div class="inner">
-      <h2 class="sec-title rv" data-st="t" style="--d:.08s">Serviços</h2>
+      <h2 class="sec-title rv" data-st="t" style="--d:.08s">Serviços<sup>(06)</sup></h2>
       <div class="sec-sub rv" data-st="t" style="--d:.16s"><p>Estratégia antes da execução. Escolha uma frente e ela já vai marcada no formulário de contato.</p></div>
       <ol class="svc" id="svcList">
         <li class="rv slide-in" data-st="s0" data-from="left"><button type="button" data-svc="Branding"><span class="n">01</span><h3>Branding e identidade visual</h3><p>Logo, paleta, tipografia e o manual que mantém a marca consistente em todo lugar.</p><span class="ar" aria-hidden="true">→</span></button></li>
@@ -557,6 +704,8 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
 
 <a class="fab-wa" href="https://wa.me/5511988366161?text=Ol%C3%A1%2C%20Igor!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
 
+<div class="cur" id="cur" aria-hidden="true"><span>Ver</span></div>
+
 <!-- exit popup -->
 <div class="xp" id="xp" role="dialog" aria-modal="true" aria-labelledby="xpTitle" hidden>
   <div class="xp-box">
@@ -597,7 +746,7 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
   const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 
   /* ---------- PT / EN ---------- */
-  const EN={"IGOR PEREIRA DSGN, voltar ao início": "IGOR PEREIRA DSGN, back to top", "Seções": "Sections", "Missões": "Missions", "Sobre": "About", "Serviços": "Services", "Contato": "Contact", "Iniciar projeto": "Start a project", "Orçamento": "Get a quote", "Design que transforma": "Design that transforms", "comunicação": "communication", "em": "into", "valor.": "value.", "O estúdio": "The studio", "Design e comunicação visual para pequenas e médias empresas, negócios locais e equipes de marketing.": "Design and visual communication for small and midsize businesses, local businesses, and marketing teams.", "Experiência": "Experience", "Mais de 13 anos em direção de arte, branding, redes sociais, editorial e audiovisual.": "13+ years of experience in art direction, branding, social media, editorial design, and audiovisual production.", "Próximo lançamento": "Next launch", "Plataforma 01 · Portão B-04": "Platform 01 · Gate B-04", "Ver missões ↓": "See missions ↓", "Pegar meu ticket": "Get my ticket", "Trabalhos para clientes e projetos autorais. Passe o mouse para ver a missão e clique para abrir todas as peças.": "Client work and personal projects. Hover over a mission to preview it, then click to view all the pieces.", "Projeto autoral · Campanha": "Personal project · Campaign", "UX/UI · Campanha": "UX/UI · Campaign", "Estudo de marca": "Brand identity study", "Identidade visual · Social media": "Visual identity · Social media", "Projeto autoral · Manipulação": "Personal project · Photo manipulation", "Manipulação de imagem": "Photo manipulation", "Ver missão →": "View mission →", "Próxima missão": "Next mission", "Seu projeto aqui": "Your project here", "Iniciar projeto →": "Start a project →", "Sobre mim": "About me", "Igor Pereira, fundador do IGOR PEREIRA DSGN": "Igor Pereira, founder of IGOR PEREIRA DSGN", "Diretor de criação, designer gráfico, publicitário e artista digital. Fundador do IGOR PEREIRA DSGN.": "Creative director, graphic designer, advertising specialist, and digital artist. Founder of IGOR PEREIRA DSGN.", "São mais de 13 anos criando comunicação visual para marcas de setores como ferramentas automotivas, educação, odontologia e seguros, com direção de arte, identidade visual e branding completo. Sou técnico em design gráfico e formado em publicidade. O estúdio nasceu para dar a pequenas e médias empresas, negócios locais e equipes de marketing um parceiro criativo que pensa na estratégia antes da execução.": "For over 13 years, I’ve created visual communications for brands in industries such as automotive tools, education, dental care, and insurance, specializing in art direction, visual identity, and comprehensive branding. I have a technical diploma in graphic design and a degree in advertising. I founded the studio to give small and midsize businesses, local businesses, and marketing teams a creative partner who puts strategy before execution.", "Anos de experiência": "Years of experience", "Frentes de serviço": "Services", "Estúdio independente": "Independent studio", "Especialidades:": "Specialties:", "Ferramentas:": "Tools:", "direção de arte / identidade visual / manipulação de imagem / design editorial / motion e vídeo": "art direction / visual identity / photo manipulation / editorial design / motion graphics and video", "Estratégia antes da execução. Escolha uma frente e ela já vai marcada no formulário de contato.": "Strategy before execution. Choose a service, and it will be preselected on the contact form.", "Branding e identidade visual": "Branding and visual identity", "Logo, paleta, tipografia e o manual que mantém a marca consistente em todo lugar.": "Logo, color palette, typography, and brand guidelines to keep your brand consistent everywhere.", "Design para redes sociais": "Social media design", "Posts, carrosséis e linhas visuais que fazem a marca ser reconhecida no feed.": "Posts, carousels, and visual systems that make your brand stand out in the feed.", "Design gráfico impresso e digital": "Print and digital graphic design", "Peças de comunicação para qualquer formato, da vitrine à tela.": "Creative assets for any format, from storefronts to screens.", "Marketing e consultoria": "Marketing and consulting", "Direção de comunicação para quem precisa de clareza antes de produzir.": "Creative direction for brands that need clarity before production.", "Produção audiovisual": "Audiovisual production", "Motion, edição de vídeo e peças animadas para campanhas e redes.": "Motion graphics, video editing, and animated assets for campaigns and social media.", "Editorial e e-books": "Editorial and e-books", "Diagramação de materiais longos com leitura confortável e acabamento profissional.": "Layout and design for long-form materials, with an easy-to-read flow and a polished finish.", "Projetos avulsos ou planos recorrentes": "One-off projects or ongoing monthly plans", "Valores sob consulta": "Pricing available upon request", "Destino final": "Final destination", "Vamos tirar seu projeto do papel?": "Ready to launch your project?", "Pegue seu ticket e embarque em uma jornada de comunicação. Conte o que você precisa e eu respondo com um plano de voo.": "Grab your ticket and start your communication journey. Tell me what you need, and I’ll get back to you with a flight plan.", "Copiar": "Copy", "Copiado": "Copied", "Você envia a ficha": "You submit the form", "Eu respondo com um plano de voo": "I’ll reply with a flight plan", "Decolamos": "We take off", "Nome": "Name", "Empresa ou marca": "Company or brand", "Prazo": "Timeline", "Sem pressa": "No rush", "Em até 1 mês": "Within a month", "Em até 2 semanas": "Within two weeks", "Urgente": "Urgent", "O que você precisa": "What you need", "Redes sociais": "Social media", "Design gráfico": "Graphic design", "Consultoria": "Consulting", "Audiovisual": "Audiovisual", "Conte sobre o projeto": "Tell me about the project", "Enviar plano de voo →": "Send flight plan →", "Ou fale direto:": "Or reach me directly:", "Mensagem enviada": "Message sent", "Recebi sua ficha de embarque e respondo em breve no e-mail que você informou. Se preferir, fale também pelo WhatsApp.": "I’ve received your boarding form and will reply to the email address you provided. You can also reach me on WhatsApp.", "Falar no WhatsApp →": "Message me on WhatsApp →", "Enviar outra mensagem": "Send another message", "Não consegui enviar daqui": "I couldn't send it from here", "A mensagem já está pronta. Envie pelo WhatsApp ou pelo e-mail com um toque.": "Your message is ready. Send it with one tap via WhatsApp or email.", "Enviar no WhatsApp →": "Send on WhatsApp →", "Abrir no e-mail": "Open email", "Copiar mensagem": "Copy message", "Editar": "Edit", "Escreva seu nome.": "Please enter your name.", "Use um e-mail no formato nome@dominio.com.": "Enter an email address in the format name@domain.com.", "Conte um pouco mais, pelo menos uma frase.": "Tell me a little more about the project (at least one sentence).", "Enviando…": "Sending…", "Fim da transmissão": "End of transmission", "Falar no WhatsApp": "Message me on WhatsApp", "Antes de decolar": "Before you take off", "Fechar": "Close", "Fechar ✕": "Close ✕", "Vamos conversar sobre o seu": "Shall we talk about your", "projeto?": "project?", "Me conte o que você precisa e eu respondo com um plano de voo. Sem compromisso.": "Tell me what you need, and I’ll get back to you with a flight plan. No commitment required.", "Chamar no WhatsApp →": "Message me on WhatsApp →", "Pedir orçamento": "Get a quote", "ou deixe seu contato que eu chamo você": "or leave your contact details and I’ll get in touch", "E-mail ou WhatsApp": "Email or WhatsApp", "Enviar": "Send", "Escreva seu nome e um e-mail ou WhatsApp com DDD.": "Enter your name and an email address or WhatsApp number, including the area code.", "Recebido! Eu chamo você em breve.": "Thanks! I’ll be in touch soon.", "Não consegui enviar daqui.": "I couldn't send it from here.", "Mande pelo WhatsApp →": "Send via WhatsApp →", "Imagem ampliada": "Zoomed-in image", "Imagem anterior": "Previous image", "Próxima imagem": "Next image", "← Voltar às missões": "← Back to missions", "Ampliar +": "Zoom in +", "Ampliar imagem": "Zoom in on image", "imagem principal": "main image", "peça": "item", "Olá, Igor! Vim pelo site e quero falar sobre um projeto.": "Hi Igor! I found your website and would like to discuss a project.", "Olá, Igor! Vim pelo site.": "Hi Igor! I found your website.", "Projeto autoral": "Personal project", "Campanha": "Campaign", "Mídia exterior": "Out-of-home advertising", "Projeto autoral: campanha completa de lançamento do VOLT X1, um SUV híbrido premium, a partir do conceito “Vá além do agora”. Identidade e comunicação pensadas para transmitir tecnologia, design, conectividade e eficiência em key visual, mídia digital, tráfego pago, outdoor, mobiliário urbano e revista.": "Personal project: a full launch campaign for the VOLT X1, a premium hybrid SUV, built around the concept “Go Beyond Now.” The visual identity and campaign were designed to convey technology, design, connectivity, and efficiency across key visuals, digital media, paid advertising, billboards, street furniture, and magazine ads.", "Tipo": "Type", "Conceito": "Concept", "Ferramentas": "Tools", "Peças": "Assets", "Entregas": "Deliverables", "Ferramenta": "Tool", "Produto": "Product", "Cliente": "Client", "Segmento": "Industry", "Técnica": "Technique", "Vá além do agora": "Go beyond now", "App mobile": "Mobile app", "App mobile conceitual": "Concept app", "UI, KV, social e flyer": "UI, key visuals, social media, and flyer", "Aplicativo para tutores de pets, criado como projeto conceitual do estúdio: interface do app e a campanha de divulgação, com key visuals, posts, stories e flyer.": "A concept app for pet owners, developed by the studio. The project includes the app interface and launch campaign, featuring key visuals, posts, stories, and a flyer.", "Identidade visual": "Visual identity", "Creme Revitalizante": "Revitalizing Cream", "Estudo de marca para a Flora Cosmétiques: logo, paleta, tipografia e a campanha de lançamento do Creme Revitalizante, com key visuals, banner e posts.": "Brand identity study for Flora Cosmétiques, including the logo, color palette, typography, and launch campaign for the Revitalizing Cream, with key visuals, a banner, and social media posts.", "Gastronomia": "Food & beverage", "Hamburgueria": "Burger joint", "Posts e stories para a hamburgueria Coquetel Burguer: rodízio de smash burger, feriados, horários, happy hour, aniversário da casa e Dia dos Namorados.": "Social media posts and stories for Coquetel Burguer, covering all-you-can-eat smash burger nights, holidays, opening hours, happy hour, the restaurant’s anniversary, and Valentine’s Day.", "Projeto experimental": "Experimental project", "Carrossel": "Carousel", "Logo e carrossel": "Logo and carousel", "Projeto experimental para o profissional de educação física e personal trainer Bruno Franklin: logo em quatro versões e um carrossel contínuo que fala de emagrecimento de forma direta, desmistificando alguns pontos e esclarecendo outros, com manipulação de imagem.": "An experimental project for personal trainer Bruno Franklin, featuring a logo in four variations and a continuous carousel that addresses weight loss directly, debunking myths and clarifying common misconceptions through photo manipulation.", "Projeto autoral: um energético fictício inspirado no Fortnite. A lata tem design vibrante em roxo, azul e vermelho e usa elementos do universo do jogo, como logo, tipografia, skins e armas, em uma composição de manipulação de imagem.": "Personal project: a fictional energy drink inspired by Fortnite. The can features a vibrant purple, blue, and red design incorporating elements from the game, including its logo, typography, skins, and weapons, in a photo-manipulation composition.", "Manipulação": "Photo manipulation", "Snickers Tornado: peça de produto com um redemoinho de chocolate e as barras em movimento, construída em manipulação de imagem.": "Snickers Tornado: a product visual featuring a chocolate swirl and bars in motion, created through photo manipulation.", "Embalagem": "Packaging", "Projeto autoral: uma vodka premium fictícia que une a edição de imagem do Photoshop à qualidade de uma destilaria artesanal. Garrafa angular, acabamento prata e paleta em azul, branco e cinza para evocar sofisticação e tecnologia.": "Personal project: a fictional premium vodka brand that combines Photoshop image editing with the craftsmanship of an artisanal distillery. The angular bottle, silver finish, and blue, white, and gray palette convey sophistication and technology."};
+  const EN={"IGOR PEREIRA DSGN, voltar ao início": "IGOR PEREIRA DSGN, back to top", "Seções": "Sections", "Missões": "Missions", "Sobre": "About", "Serviços": "Services", "Contato": "Contact", "Iniciar projeto": "Start a project", "Orçamento": "Get a quote", "Design que transforma": "Design that transforms", "comunicação": "communication", "em": "into", "valor.": "value.", "O estúdio": "The studio", "Design e comunicação visual para pequenas e médias empresas, negócios locais e equipes de marketing.": "Design and visual communication for small and midsize businesses, local businesses, and marketing teams.", "Experiência": "Experience", "Mais de 13 anos em direção de arte, branding, redes sociais, editorial e audiovisual.": "13+ years of experience in art direction, branding, social media, editorial design, and audiovisual production.", "Próximo lançamento": "Next launch", "Plataforma 01 · Portão B-04": "Platform 01 · Gate B-04", "Ver missões ↓": "See missions ↓", "Pegar meu ticket": "Get my ticket", "Trabalhos para clientes e projetos autorais. Passe o mouse para ver a missão e clique para abrir todas as peças.": "Client work and personal projects. Hover over a mission to preview it, then click to view all the pieces.", "Projeto autoral · Campanha": "Personal project · Campaign", "UX/UI · Campanha": "UX/UI · Campaign", "Estudo de marca": "Brand identity study", "Identidade visual · Social media": "Visual identity · Social media", "Projeto autoral · Manipulação": "Personal project · Photo manipulation", "Manipulação de imagem": "Photo manipulation", "Ver missão →": "View mission →", "Próxima missão": "Next mission", "Seu projeto aqui": "Your project here", "Iniciar projeto →": "Start a project →", "Sobre mim": "About me", "Igor Pereira, fundador do IGOR PEREIRA DSGN": "Igor Pereira, founder of IGOR PEREIRA DSGN", "Diretor de criação, designer gráfico, publicitário e artista digital. Fundador do IGOR PEREIRA DSGN.": "Creative director, graphic designer, advertising specialist, and digital artist. Founder of IGOR PEREIRA DSGN.", "São mais de 13 anos criando comunicação visual para marcas de setores como ferramentas automotivas, educação, odontologia e seguros, com direção de arte, identidade visual e branding completo. Sou técnico em design gráfico e formado em publicidade. O estúdio nasceu para dar a pequenas e médias empresas, negócios locais e equipes de marketing um parceiro criativo que pensa na estratégia antes da execução.": "For over 13 years, I’ve created visual communications for brands in industries such as automotive tools, education, dental care, and insurance, specializing in art direction, visual identity, and comprehensive branding. I have a technical diploma in graphic design and a degree in advertising. I founded the studio to give small and midsize businesses, local businesses, and marketing teams a creative partner who puts strategy before execution.", "Anos de experiência": "Years of experience", "Frentes de serviço": "Services", "Estúdio independente": "Independent studio", "Especialidades:": "Specialties:", "Ferramentas:": "Tools:", "direção de arte / identidade visual / manipulação de imagem / design editorial / motion e vídeo": "art direction / visual identity / photo manipulation / editorial design / motion graphics and video", "Estratégia antes da execução. Escolha uma frente e ela já vai marcada no formulário de contato.": "Strategy before execution. Choose a service, and it will be preselected on the contact form.", "Branding e identidade visual": "Branding and visual identity", "Logo, paleta, tipografia e o manual que mantém a marca consistente em todo lugar.": "Logo, color palette, typography, and brand guidelines to keep your brand consistent everywhere.", "Design para redes sociais": "Social media design", "Posts, carrosséis e linhas visuais que fazem a marca ser reconhecida no feed.": "Posts, carousels, and visual systems that make your brand stand out in the feed.", "Design gráfico impresso e digital": "Print and digital graphic design", "Peças de comunicação para qualquer formato, da vitrine à tela.": "Creative assets for any format, from storefronts to screens.", "Marketing e consultoria": "Marketing and consulting", "Direção de comunicação para quem precisa de clareza antes de produzir.": "Creative direction for brands that need clarity before production.", "Produção audiovisual": "Audiovisual production", "Motion, edição de vídeo e peças animadas para campanhas e redes.": "Motion graphics, video editing, and animated assets for campaigns and social media.", "Editorial e e-books": "Editorial and e-books", "Diagramação de materiais longos com leitura confortável e acabamento profissional.": "Layout and design for long-form materials, with an easy-to-read flow and a polished finish.", "Projetos avulsos ou planos recorrentes": "One-off projects or ongoing monthly plans", "Valores sob consulta": "Pricing available upon request", "Destino final": "Final destination", "Vamos tirar seu projeto do papel?": "Ready to launch your project?", "Pegue seu ticket e embarque em uma jornada de comunicação. Conte o que você precisa e eu respondo com um plano de voo.": "Grab your ticket and start your communication journey. Tell me what you need, and I’ll get back to you with a flight plan.", "Copiar": "Copy", "Copiado": "Copied", "Você envia a ficha": "You submit the form", "Eu respondo com um plano de voo": "I’ll reply with a flight plan", "Decolamos": "We take off", "Nome": "Name", "Empresa ou marca": "Company or brand", "Prazo": "Timeline", "Sem pressa": "No rush", "Em até 1 mês": "Within a month", "Em até 2 semanas": "Within two weeks", "Urgente": "Urgent", "O que você precisa": "What you need", "Redes sociais": "Social media", "Design gráfico": "Graphic design", "Consultoria": "Consulting", "Audiovisual": "Audiovisual", "Conte sobre o projeto": "Tell me about the project", "Enviar plano de voo →": "Send flight plan →", "Ou fale direto:": "Or reach me directly:", "Mensagem enviada": "Message sent", "Recebi sua ficha de embarque e respondo em breve no e-mail que você informou. Se preferir, fale também pelo WhatsApp.": "I’ve received your boarding form and will reply to the email address you provided. You can also reach me on WhatsApp.", "Falar no WhatsApp →": "Message me on WhatsApp →", "Enviar outra mensagem": "Send another message", "Não consegui enviar daqui": "I couldn't send it from here", "A mensagem já está pronta. Envie pelo WhatsApp ou pelo e-mail com um toque.": "Your message is ready. Send it with one tap via WhatsApp or email.", "Enviar no WhatsApp →": "Send on WhatsApp →", "Abrir no e-mail": "Open email", "Copiar mensagem": "Copy message", "Editar": "Edit", "Escreva seu nome.": "Please enter your name.", "Use um e-mail no formato nome@dominio.com.": "Enter an email address in the format name@domain.com.", "Conte um pouco mais, pelo menos uma frase.": "Tell me a little more about the project (at least one sentence).", "Enviando…": "Sending…", "Fim da transmissão": "End of transmission", "Falar no WhatsApp": "Message me on WhatsApp", "Antes de decolar": "Before you take off", "Fechar": "Close", "Fechar ✕": "Close ✕", "Vamos conversar sobre o seu": "Shall we talk about your", "projeto?": "project?", "Me conte o que você precisa e eu respondo com um plano de voo. Sem compromisso.": "Tell me what you need, and I’ll get back to you with a flight plan. No commitment required.", "Chamar no WhatsApp →": "Message me on WhatsApp →", "Pedir orçamento": "Get a quote", "ou deixe seu contato que eu chamo você": "or leave your contact details and I’ll get in touch", "E-mail ou WhatsApp": "Email or WhatsApp", "Enviar": "Send", "Escreva seu nome e um e-mail ou WhatsApp com DDD.": "Enter your name and an email address or WhatsApp number, including the area code.", "Recebido! Eu chamo você em breve.": "Thanks! I’ll be in touch soon.", "Não consegui enviar daqui.": "I couldn't send it from here.", "Mande pelo WhatsApp →": "Send via WhatsApp →", "Imagem ampliada": "Zoomed-in image", "Imagem anterior": "Previous image", "Próxima imagem": "Next image", "← Voltar às missões": "← Back to missions", "Ampliar +": "Zoom in +", "Ampliar imagem": "Zoom in on image", "imagem principal": "main image", "peça": "item", "Olá, Igor! Vim pelo site e quero falar sobre um projeto.": "Hi Igor! I found your website and would like to discuss a project.", "Olá, Igor! Vim pelo site.": "Hi Igor! I found your website.", "Projeto autoral": "Personal project", "Campanha": "Campaign", "Mídia exterior": "Out-of-home advertising", "Projeto autoral: campanha completa de lançamento do VOLT X1, um SUV híbrido premium, a partir do conceito “Vá além do agora”. Identidade e comunicação pensadas para transmitir tecnologia, design, conectividade e eficiência em key visual, mídia digital, tráfego pago, outdoor, mobiliário urbano e revista.": "Personal project: a full launch campaign for the VOLT X1, a premium hybrid SUV, built around the concept “Go Beyond Now.” The visual identity and campaign were designed to convey technology, design, connectivity, and efficiency across key visuals, digital media, paid advertising, billboards, street furniture, and magazine ads.", "Tipo": "Type", "Conceito": "Concept", "Ferramentas": "Tools", "Peças": "Assets", "Entregas": "Deliverables", "Ferramenta": "Tool", "Produto": "Product", "Cliente": "Client", "Segmento": "Industry", "Técnica": "Technique", "Vá além do agora": "Go beyond now", "App mobile": "Mobile app", "App mobile conceitual": "Concept app", "UI, KV, social e flyer": "UI, key visuals, social media, and flyer", "Aplicativo para tutores de pets, criado como projeto conceitual do estúdio: interface do app e a campanha de divulgação, com key visuals, posts, stories e flyer.": "A concept app for pet owners, developed by the studio. The project includes the app interface and launch campaign, featuring key visuals, posts, stories, and a flyer.", "Identidade visual": "Visual identity", "Creme Revitalizante": "Revitalizing Cream", "Estudo de marca para a Flora Cosmétiques: logo, paleta, tipografia e a campanha de lançamento do Creme Revitalizante, com key visuals, banner e posts.": "Brand identity study for Flora Cosmétiques, including the logo, color palette, typography, and launch campaign for the Revitalizing Cream, with key visuals, a banner, and social media posts.", "Gastronomia": "Food & beverage", "Hamburgueria": "Burger joint", "Posts e stories para a hamburgueria Coquetel Burguer: rodízio de smash burger, feriados, horários, happy hour, aniversário da casa e Dia dos Namorados.": "Social media posts and stories for Coquetel Burguer, covering all-you-can-eat smash burger nights, holidays, opening hours, happy hour, the restaurant’s anniversary, and Valentine’s Day.", "Projeto experimental": "Experimental project", "Carrossel": "Carousel", "Logo e carrossel": "Logo and carousel", "Projeto experimental para o profissional de educação física e personal trainer Bruno Franklin: logo em quatro versões e um carrossel contínuo que fala de emagrecimento de forma direta, desmistificando alguns pontos e esclarecendo outros, com manipulação de imagem.": "An experimental project for personal trainer Bruno Franklin, featuring a logo in four variations and a continuous carousel that addresses weight loss directly, debunking myths and clarifying common misconceptions through photo manipulation.", "Projeto autoral: um energético fictício inspirado no Fortnite. A lata tem design vibrante em roxo, azul e vermelho e usa elementos do universo do jogo, como logo, tipografia, skins e armas, em uma composição de manipulação de imagem.": "Personal project: a fictional energy drink inspired by Fortnite. The can features a vibrant purple, blue, and red design incorporating elements from the game, including its logo, typography, skins, and weapons, in a photo-manipulation composition.", "Manipulação": "Photo manipulation", "Snickers Tornado: peça de produto com um redemoinho de chocolate e as barras em movimento, construída em manipulação de imagem.": "Snickers Tornado: a product visual featuring a chocolate swirl and bars in motion, created through photo manipulation.", "Embalagem": "Packaging", "Projeto autoral: uma vodka premium fictícia que une a edição de imagem do Photoshop à qualidade de uma destilaria artesanal. Garrafa angular, acabamento prata e paleta em azul, branco e cinza para evocar sofisticação e tecnologia.": "Personal project: a fictional premium vodka brand that combines Photoshop image editing with the craftsmanship of an artisanal distillery. The angular bottle, silver finish, and blue, white, and gray palette convey sophistication and technology.", "IPD-01 · Estúdio independente de design": "IPD-01 · Independent design studio", "anos em direção de arte, branding e audiovisual": "years in art direction, branding and audiovisual", "Missões no portfólio": "Missions in the portfolio", "clientes e projetos autorais": "client work and personal projects", "Pegar meu ticket →": "Get my ticket →", "Ver": "View"};
   const PT={};for(const k in EN) PT[EN[k]]=k;
   const norm=x=>x.replace(/\s+/g,' ').trim();
   const lsGet=k=>{try{return localStorage.getItem(k)}catch(e){return null}}, lsSet=(k,v)=>{try{localStorage.setItem(k,v)}catch(e){}};
@@ -838,8 +987,9 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
   }
 
   /* ---------- countdown ---------- */
-  const clock=$('#clock');let tick=10;
-  setInterval(()=>{tick=tick<=0?10:tick-1;clock.textContent='00:00:'+String(tick).padStart(2,'0')},1000);
+  const clock=$('#clock');
+  const spFmt=new Intl.DateTimeFormat('pt-BR',{timeZone:'America/Sao_Paulo',hour:'2-digit',minute:'2-digit'});
+  const tickClock=()=>{clock.textContent=spFmt.format(new Date())};tickClock();setInterval(tickClock,15000);
 
   /* ---------- services → contact form ---------- */
   $$('#svcList button').forEach(b=>b.addEventListener('click',()=>{
@@ -955,6 +1105,18 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
       ly=y;lt=t;
     },{passive:true});
     setTimeout(()=>{const c=$('#contato').getBoundingClientRect();if(c.top>innerHeight) openXp();},45000);
+  }
+
+  /* ---------- red cursor that grows into "Ver" over projects ---------- */
+  {
+    const cur=$('#cur');
+    if(matchMedia('(hover:hover)').matches&&!reduce){
+      let x=-100,y=-100,cx=x,cy=y;
+      addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;cur.style.opacity=1},{passive:true});
+      document.addEventListener('mouseleave',()=>{cur.style.opacity=0});
+      $$('#mosaic .tile').forEach(c=>{c.addEventListener('mouseenter',()=>cur.classList.add('big'));c.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
+      (function loop(){cx+=(x-cx)*.2;cy+=(y-cy)*.2;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
+    }
   }
 
   /* ---------- mobile menu ---------- */
