@@ -393,6 +393,7 @@ footer{border-top:var(--bw) solid var(--line);background:var(--void)}
 .arc-b{right:auto;left:-14%;top:auto;bottom:-10%}
 .band.light .inner{position:relative;z-index:1}
 .band.light{overflow:clip}
+.band.pad{overflow-x:clip}
 .back{white-space:nowrap}
 
 /* mosaic */
@@ -415,6 +416,8 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
 .tile.next-mission strong{font-family:var(--f-display);font-weight:700;text-transform:none;letter-spacing:-.04em;font-size:clamp(26px,2.6vw,38px)}
 .tile.next-mission:hover .img{background:var(--signal)}
 .tile.next-mission:hover small{color:#fff}
+.tile.next-mission .label span:last-child{background:none;padding:0;color:var(--ink-2);font-family:var(--f-body);font-size:16px;align-self:baseline}
+.tile.next-mission:hover .label span:last-child{background:none;color:var(--signal)}
 
 /* about */
 .about-grid{border:1px solid var(--line);margin-top:clamp(28px,4vw,48px)}
@@ -462,12 +465,6 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
 .shot:hover::after,.cover:hover::after{font-family:var(--f-mono);font-size:11px;letter-spacing:.02em}
 .wordmark{padding-top:40px}
 
-/* cursor */
-.cur{position:fixed;left:0;top:0;z-index:80;pointer-events:none;width:12px;height:12px;border-radius:50%;background:var(--signal);display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;text-transform:uppercase;color:#fff;opacity:0;transition:width .3s cubic-bezier(.2,.8,.2,1),height .3s cubic-bezier(.2,.8,.2,1),opacity .2s}
-.cur span{opacity:0;transition:opacity .2s}
-.cur.big{width:96px;height:96px}
-.cur.big span{opacity:1}
-@media (hover:none){.cur{display:none}}
 @media (prefers-reduced-motion:reduce){.hero h1 .ln>span{animation:none;transform:none}.orbits .spin{animation:none}.orbits .sat{display:none}}
 
 /* locked steps: the section pins under the header and each stretch of scroll brings in one element */
@@ -559,7 +556,7 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
   </section>
 
   <!-- MISSÕES (claro) -->
-  <section class="band light pad" id="projetos" data-steps>
+  <section class="band light pad" id="projetos">
     <svg class="arc" viewBox="0 0 900 600" aria-hidden="true"><ellipse cx="450" cy="300" rx="440" ry="150" fill="none" stroke="rgba(11,11,12,.12)" stroke-width="1" transform="rotate(-12 450 300)"/><circle cx="70" cy="365" r="4" fill="#0b0b0c"/></svg>
     <div class="inner">
       <h2 class="sec-title rv" data-st="t" style="--d:.08s">Missões<sup>(08)</sup></h2>
@@ -590,32 +587,32 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
   </section>
 
   <!-- SOBRE (escuro) -->
-  <section class="band dark pad" id="sobre" data-steps>
+  <section class="band dark pad" id="sobre">
     <div class="inner">
       <h2 class="sec-title rv" data-st="t" style="--d:.08s">Sobre mim</h2>
-      <div class="about-grid rv" data-st="photo" data-fx="fade" style="--d:.16s">
-        <div class="about-photo" data-st="photo" data-from="left">
+      <div class="about-grid" data-st="photo" data-fx="fade">
+        <div class="about-photo rv" data-st="photo" data-from="left">
           <div class="photo"><img src="img/igor.webp" alt="Igor Pereira, fundador do IGOR PEREIRA DSGN" width="1200" height="1500" loading="lazy" decoding="async"></div>
         </div>
         <div class="about-text">
-          <div class="body" data-st="bio" data-from="right">
+          <div class="body rv" data-st="bio" data-from="right">
             <h3>Igor Pereira</h3>
             <p class="lead">Diretor de criação, designer gráfico, publicitário e artista digital. Fundador do IGOR PEREIRA DSGN.</p>
             <p class="bio">São mais de 13 anos criando comunicação visual para marcas de setores como ferramentas automotivas, educação, odontologia e seguros, com direção de arte, identidade visual e branding completo. Sou técnico em design gráfico e formado em publicidade. O estúdio nasceu para dar a pequenas e médias empresas, negócios locais e equipes de marketing um parceiro criativo que pensa na estratégia antes da execução.</p>
           </div>
-          <div class="stats" data-st="stats" data-from="right">
+          <div class="stats rv" data-st="stats" data-from="right" style="--d:.12s">
             <div><strong>13<em>+</em></strong><span>Anos de experiência</span></div>
             <div><strong>06</strong><span>Frentes de serviço</span></div>
             <div><strong>01</strong><span>Estúdio independente</span></div>
           </div>
-          <div class="skills" data-st="skills" data-from="right"><b>Especialidades:</b> direção de arte / identidade visual / manipulação de imagem / design editorial / motion e vídeo<br><b>Ferramentas:</b> Photoshop / Illustrator / InDesign / Lightroom / Premiere / After Effects</div>
+          <div class="skills rv" data-st="skills" data-from="right" style="--d:.24s"><b>Especialidades:</b> direção de arte / identidade visual / manipulação de imagem / design editorial / motion e vídeo<br><b>Ferramentas:</b> Photoshop / Illustrator / InDesign / Lightroom / Premiere / After Effects</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SERVIÇOS (claro) -->
-  <section class="band light pad" id="servicos" data-steps>
+  <section class="band light pad" id="servicos">
     <svg class="arc arc-b" viewBox="0 0 900 600" aria-hidden="true"><ellipse cx="450" cy="300" rx="440" ry="150" fill="none" stroke="rgba(11,11,12,.10)" stroke-width="1" transform="rotate(14 450 300)"/><circle cx="836" cy="420" r="4" fill="#e5232f"/></svg>
     <div class="inner">
       <h2 class="sec-title rv" data-st="t" style="--d:.08s">Serviços<sup>(06)</sup></h2>
@@ -633,18 +630,18 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
   </section>
 
   <!-- CONTATO (escuro) -->
-  <section class="band dark pad" id="contato" data-steps>
+  <section class="band dark pad" id="contato">
     <div class="inner">
       <div class="ibar rv" data-st="t"><span class="n">04</span><span>Destino final</span><span class="r">Contato</span></div>
       <h2 class="sec-title rv" data-st="t" style="--d:.08s;font-size:clamp(40px,7.4vw,112px);max-width:14ch">Vamos tirar seu projeto do papel?</h2>
-      <div class="contact-grid rv" data-st="info" data-fx="fade" style="--d:.16s">
-        <div class="contact-info" data-st="info" data-from="left">
+      <div class="contact-grid" data-st="info" data-fx="fade">
+        <div class="contact-info rv" data-st="info" data-from="left">
           <p>Pegue seu ticket e embarque em uma jornada de comunicação. Conte o que você precisa e eu respondo com um plano de voo.</p>
           <div class="mailbox"><code id="mail">design.igorpereira@gmail.com</code><button class="copy" id="copyBtn" type="button">Copiar</button></div>
           <a class="btn wa" href="https://wa.me/5511988366161?text=Ol%C3%A1%2C%20Igor!%20Vim%20pelo%20site%20e%20quero%20falar%20sobre%20um%20projeto." target="_blank" rel="noopener">WhatsApp · +55 11 98836-6161 →</a>
           <div class="list"><span><b>01</b> Você envia a ficha</span><span><b>02</b> Eu respondo com um plano de voo</span><span><b>03</b> Decolamos</span></div>
         </div>
-        <div class="form" id="formBox" data-st="form" data-from="right">
+        <div class="form rv" id="formBox" data-st="form" data-from="right" style="--d:.12s">
           <form id="lead" novalidate>
             <div class="row2">
               <div class="field"><label for="f-nome">Nome <span>*</span></label><input id="f-nome" name="nome" autocomplete="name" required><span class="err" id="e-nome"></span></div>
@@ -703,8 +700,6 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
 </footer>
 
 <a class="fab-wa" href="https://wa.me/5511988366161?text=Ol%C3%A1%2C%20Igor!%20Vim%20pelo%20site." target="_blank" rel="noopener" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.2-.4.7-1.4a.5.5 0 0 0 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.4.8 3.2.6a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg><span>WhatsApp</span></a>
-
-<div class="cur" id="cur" aria-hidden="true"><span>Ver</span></div>
 
 <!-- exit popup -->
 <div class="xp" id="xp" role="dialog" aria-modal="true" aria-labelledby="xpTitle" hidden>
@@ -936,7 +931,7 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
   const mosaicEl=$('#mosaic'),tiles=$$('#mosaic .tile');
   // light sections: swap the on-enter reveal for a scroll-tied rise that starts late
   const scrubs=reduce?[]:$$('.rv').filter(el=>!el.closest('#embarque'));   // every section except the opening screen
-  scrubs.forEach(el=>{el.classList.remove('rv');el.classList.add('sc');el._x=el.classList.contains('slide-in');el._lag=parseFloat(el.style.getPropertyValue('--d')||0)*1.5;});
+  scrubs.forEach(el=>{el.classList.remove('rv');el.classList.add('sc');el._x=el.dataset.from==='right'?1:(el.dataset.from==='left'||el.classList.contains('slide-in'))?-1:0;el._lag=parseFloat(el.style.getPropertyValue('--d')||0)*1.5;});
   function wave(grid,items,dist){
     const cols=getComputedStyle(grid).gridTemplateColumns.split(' ').length;
     const gTop=grid.getBoundingClientRect().top;
@@ -958,13 +953,14 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
         el.style.transform=`translate3d(${mx*sp*-50}px,${(r.top)*sp+my*sp*-50}px,0)`;
       }
       const maxS=document.documentElement.scrollHeight-H, endQ=(sy-(maxS-H*0.35))/(H*0.35);   // whatever can't scroll far enough finishes at the page end
+      wave(mosaicEl,tiles,180);
       for(const el of scrubs){
         const top=el.getBoundingClientRect().top-(el._oy||0);      // position without our own offset
         let q=(H*0.62-top)/(H*0.3)-(el._lag||0);
         q=Math.max(q,endQ); q=Math.min(1,Math.max(0,q));
         const e=1-Math.pow(1-q,3);
         el._oy=(1-e)*(el._x?40:140);
-        el.style.transform=el._x?`translate3d(${(1-e)*-120}px,${el._oy}px,0)`:`translate3d(0,${el._oy}px,0)`;
+        el.style.transform=`translate3d(${(1-e)*120*el._x*(innerWidth<760?.45:1)}px,${el._oy}px,0)`;
         el.style.opacity=e;
       }
       for(const t of tiles){
@@ -1105,18 +1101,6 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
       ly=y;lt=t;
     },{passive:true});
     setTimeout(()=>{const c=$('#contato').getBoundingClientRect();if(c.top>innerHeight) openXp();},45000);
-  }
-
-  /* ---------- red cursor that grows into "Ver" over projects ---------- */
-  {
-    const cur=$('#cur');
-    if(matchMedia('(hover:hover)').matches&&!reduce){
-      let x=-100,y=-100,cx=x,cy=y;
-      addEventListener('mousemove',e=>{x=e.clientX;y=e.clientY;cur.style.opacity=1},{passive:true});
-      document.addEventListener('mouseleave',()=>{cur.style.opacity=0});
-      $$('#mosaic .tile').forEach(c=>{c.addEventListener('mouseenter',()=>cur.classList.add('big'));c.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
-      (function loop(){cx+=(x-cx)*.2;cy+=(y-cy)*.2;cur.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;requestAnimationFrame(loop)})();
-    }
   }
 
   /* ---------- mobile menu ---------- */
