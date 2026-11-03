@@ -416,8 +416,15 @@ a.tile:hover .art img,a.tile:focus-visible .art img{transform:scale(1.05)}
 .tile.next-mission strong{font-family:var(--f-display);font-weight:700;text-transform:none;letter-spacing:-.04em;font-size:clamp(26px,2.6vw,38px)}
 .tile.next-mission:hover .img{background:var(--signal)}
 .tile.next-mission:hover small{color:#fff}
-.tile.next-mission .label span:last-child{background:none;padding:0;color:var(--ink-2);font-family:var(--f-body);font-size:16px;align-self:baseline}
-.tile.next-mission:hover .label span:last-child{background:none;color:var(--signal)}
+/* images only; the project name appears on hover, the category lives on the project page */
+.mosaic{row-gap:clamp(16px,2vw,28px)}
+.tile .label{position:absolute;inset:0;z-index:2;display:flex;align-items:flex-end;margin:0;padding:clamp(16px,2vw,24px);border:0;background:linear-gradient(to top,rgba(11,11,12,.72),rgba(11,11,12,.15) 60%,rgba(11,11,12,0));opacity:0;transition:opacity .35s;pointer-events:none}
+.tile .label .n,.tile .label span:last-child{display:none}
+.tile .label b{color:var(--star);font-size:clamp(22px,2.2vw,32px);font-weight:600;letter-spacing:-.035em;line-height:1.05;transform:translateY(12px);transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+a.tile:hover .label,a.tile:focus-visible .label{opacity:1}
+a.tile:hover .label b,a.tile:focus-visible .label b{transform:none}
+.tile.next-mission .label{display:none}
+@media (hover:none){.tile .label{opacity:1;background:linear-gradient(to top,rgba(11,11,12,.6),rgba(11,11,12,0) 45%)}.tile .label b{transform:none;font-size:20px}}
 
 /* about */
 .about-grid{border:1px solid var(--line);margin-top:clamp(28px,4vw,48px)}
